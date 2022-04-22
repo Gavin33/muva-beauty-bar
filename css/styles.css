@@ -1,0 +1,93 @@
+.sale {
+    background-color: #f7cbdc
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.jumbotron {
+    background-color: white;
+}
+i {
+    color: #4eb19b
+}
+
+.about-1{
+    margin: 30px;
+    padding: 5px;
+}
+
+.about-1 h1 {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+.about-1 p{
+    text-align: center;
+    padding: 3px;
+    color: #0e0b0c;
+}
+
+.about-item{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 80px,30px;
+    box-shadow: 0 0 9px rgba(0,0,0 .6);
+}
+
+.about-item i{
+    font-size: 43px;
+    margin: 0;
+}
+
+.about-item h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.about-item hr{
+    width: 46px;
+    height: 3px;
+    background-color: antiquewhite;
+}
+/* Makes a sidebar */
+.wrapper {
+    align-items: stretch;
+    display: flex;
+}
+
+.sidebar {
+    background-color: rgb(110, 194, 135);
+    max-height: 100vh;
+    min-width: 125px;
+    max-width: 125px;
+}
+
+.wrapper h3 {
+    color: #faf0e8;
+}
+
+.about-item p{
+    margin-top: 20px;  
+}
+
+.about-item:hover p{
+    color: #d3c481;
+}
+
+.about-item:hover hr{
+    background-color: aquamarine;
+}
+
+/* .best-sellers-body {
+    margin-bottom: 3vh;
+} */
+
+/* .carousel {
+    height: 0.5rem;
+} */
+#subscribeModal .modal-header {
+    background-color: #17A2B8;
+    color: rgb(221, 153, 148); }
