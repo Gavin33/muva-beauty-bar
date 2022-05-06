@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { Control, Form, Errors } from 'react-redux-forms';
+import Logo from "../img/Press On Line Logo 1 copy.png"
 
 class Header extends Component {
 
@@ -36,79 +38,81 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid>
+                {/* Sale */}
+                <div className="text-center sale">
+                    Free Shipping on Domestic Orders $75+ | Get 15% Off With Code Muva15
+                </div>
+                {/* Logo */}
+                <div className="container">
+                    <div className="row">
+                        <div className="col"></div>
+                        <div className="col">
+                            <a href="/"><img src={Logo}
+                                alt="B. Press'd By Muva Beauty Bar Logo" />
+                            </a>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+                </div>
+
+                <Nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
                     <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <h1>NuCamp</h1>
-                                <h2>a better way to camp</h2>
-                            </div>
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="d-block d-md-none">
+                            <i className="fa fa-user"></i>
+                        </div>
+                        <div className="d-block d-md-none">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                        <div className="d-block d-md-none">
+                            <i className="fa fa-shopping-cart"></i>
+                        </div>
+                        <div className="collapse navbar-collapse" id="navbar">
+                            <ul className="navbar-nav flex-row align-items-center sticky-top">
+                                <li className="nav-item col-4 col-sm-3 col-md-2">
+                                    <select name="currency" id="currency" className="custom-select custom-select-sm">
+
+                                        <option selected value="USD">USD</option>
+
+                                        <option value="CAD">CAD</option>
+
+                                        <option value="EUR">EUR</option>
+
+                                        <option value="GBP">GBP</option>
+
+                                    </select>
+                                </li>
+                                <li className="nav-item col active">
+                                    <a href="#" className="nav-link"> Home</a>
+                                </li>
+                                <li className="nav-item col text-muted">
+                                    <a href="shop.html" className="nav-link"> Shop</a>
+                                </li>
+                                <li className="nav-item col">
+                                    <a href="aboutus.html" className="nav-link"> About</a>
+                                </li>
+                                <li className="nav-item col">
+                                    <a href="faq.html" className="nav-link"> FAQs</a>
+                                </li>
+                                <li className="nav-item col">
+                                    <a href="faq.html" className="nav-link"> Subscribe</a>
+                                </li>
+                                <li className="nav-item col d-none d-md-block">
+                                    <i className="fa fa-user"></i>
+                                </li>
+                                <li className="nav-item col d-none d-md-block">
+                                    <i className="fa fa-search" aria-hidden="true"></i>
+                                </li>
+                                <li className="nav-item col d-none d-md-block">
+                                    <i className="fa fa-shopping-cart"></i>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </Jumbotron>
-
-                <Navbar dark sticky="top" expand="md">
-                    <div className="container">
-                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="NuCamp Logo" /></NavbarBrand>
-                        <NavbarToggler onClick={this.toggleNav} />
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/home">
-                                        <i className="fa fa-home fa-lg" /> Home
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/directory">
-                                        <i className="fa fa-list fa-lg" /> Directory
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
-                                        <i className="fa fa-info fa-lg" /> About
-                                    </NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/contactus">
-                                        <i className="fa fa-address-card fa-lg" /> Contact Us
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                            <span className="navbar-text ml-auto">
-                                <Button outline onClick={this.toggleModal}>
-                                    <i className="fa fa-sign-in fa-lg" /> Login
-                                </Button>
-                            </span>
-                        </Collapse>
-                    </div>
-                </Navbar>
-
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>
-                    </ModalHeader>
-                    <ModalBody>
-                        <Form onSubmit={this.handleLogin}>
-                            <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" 
-                                innerRef={input => this.username = input}/>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password" 
-                                innerRef={input => this.password = input} />
-                            </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="remember" innerRef={input => this.checkbox = input}/>
-                                    Remember me
-                                </Label>
-                            </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
-                        </Form>
-                    </ModalBody>
-                </Modal>
-            </React.Fragment>
+                </Nav>
+            </React.Fragment >
         );
     }
 }
