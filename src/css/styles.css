@@ -88,6 +88,63 @@ i {
 /* .carousel {
     height: 0.5rem;
 } */
+/* .carousel-item-end > img { 
+    width: 74.5%;
+  } */
+
+/*  .carousel-item > img {
+     padding: auto;
+     margin: 0 auto;
+     width: auto;
+     height: auto;
+ } */
+
+ .lg-carousel-img {
+    width: 485px;
+    height: 306px;
+ }
+
+ .lg-carousel .carousel-inner .carousel-item-prev {
+     z-index: -1;
+ }
+
+ 
+ .lg-carousel {
+     margin-left: 24vw;
+ }
+
+
 #subscribeModal .modal-header {
     background-color: #17A2B8;
     color: rgb(221, 153, 148); }
+
+/* .lg-carousel .carousel-control-prev {
+    justify-content: flex-start;
+    max-width: 72.75px
+}
+.lg-carousel .carousel-indicators{
+    justify-content: flex-start;
+    max-width: 339px;
+    margin-left: 72.75px;
+    margin-right: 72.75px;
+}
+
+.lg-carousel .carousel-control-next {
+    max-width: 72.75px
+} */
+
+.carousel-fix {
+    max-width: 763px;
+}
+
+.navbar > .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.nav-item {
+    margin-left: 3vw
+}

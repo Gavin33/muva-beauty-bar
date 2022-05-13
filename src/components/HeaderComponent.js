@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, FormGroup, Input, Label } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import { Control, Form, Errors } from 'react-redux-forms';
-import Logo from "../img/Press On Line Logo 1 copy.png"
+import { Navbar, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
+import LOGO from '../shared/Logo';
 
 class Header extends Component {
 
@@ -47,31 +45,34 @@ class Header extends Component {
                     <div className="row">
                         <div className="col"></div>
                         <div className="col">
-                            <a href="/"><img src={Logo}
-                                alt="B. Press'd By Muva Beauty Bar Logo" />
+                            <a href="/"><img src={LOGO}
+                                alt="B. Press'd By Muva Beauty Bar Logo"/>
                             </a>
                         </div>
                         <div className="col"></div>
                     </div>
                 </div>
 
-                <Nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
+                <Navbar light sticky="top" expand="md" className="bg-light">
                     <div className="container">
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="d-block d-md-none">
-                            <i className="fa fa-user"></i>
+                        <div className="row">
+                            <NavbarToggler onClick={this.toggleNav} className="col-3" />
+                            <div className="col" />
+                            <div className="d-block d-md-none col">
+                                <i className="fa fa-user"></i>
+                            </div>
+                            <div className="col" />
+                            <div className="d-block d-md-none col">
+                                <i className="fa fa-search" aria-hidden="true"></i>
+                            </div>
+                            <div className="col" />
+                            <div className="d-block d-md-none col">
+                                <i className="fa fa-shopping-cart"></i>
+                            </div>
                         </div>
-                        <div className="d-block d-md-none">
-                            <i className="fa fa-search" aria-hidden="true"></i>
-                        </div>
-                        <div className="d-block d-md-none">
-                            <i className="fa fa-shopping-cart"></i>
-                        </div>
-                        <div className="collapse navbar-collapse" id="navbar">
-                            <ul className="navbar-nav flex-row align-items-center sticky-top">
-                                <li className="nav-item col-4 col-sm-3 col-md-2">
+                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                            <Nav navbar>
+                                <NavItem className="col-4 col-sm-3 col-md-2 mt-3">
                                     <select name="currency" id="currency" className="custom-select custom-select-sm">
 
                                         <option selected value="USD">USD</option>
@@ -83,35 +84,35 @@ class Header extends Component {
                                         <option value="GBP">GBP</option>
 
                                     </select>
-                                </li>
-                                <li className="nav-item col active">
-                                    <a href="#" className="nav-link"> Home</a>
-                                </li>
-                                <li className="nav-item col text-muted">
-                                    <a href="shop.html" className="nav-link"> Shop</a>
-                                </li>
-                                <li className="nav-item col">
-                                    <a href="aboutus.html" className="nav-link"> About</a>
-                                </li>
-                                <li className="nav-item col">
-                                    <a href="faq.html" className="nav-link"> FAQs</a>
-                                </li>
-                                <li className="nav-item col">
-                                    <a href="faq.html" className="nav-link"> Subscribe</a>
-                                </li>
-                                <li className="nav-item col d-none d-md-block">
+                                </NavItem>
+                                <NavItem className="col active">
+                                    <a href="/" className="nav-link"> Home</a>
+                                </NavItem>
+                                <NavItem className="col text-muted">
+                                    <a href="/shop" className="nav-link"> Shop</a>
+                                </NavItem>
+                                <NavItem className="col">
+                                    <a href="/aboutus" className="nav-link"> About</a>
+                                </NavItem>
+                                <NavItem className="col">
+                                    <a href="/faq" className="nav-link"> FAQs</a>
+                                </NavItem>
+                                <NavItem className="col">
+                                    <a href="/faq" className="nav-link"> Subscribe</a>
+                                </NavItem>
+                                <NavItem className="col d-none d-md-block">
                                     <i className="fa fa-user"></i>
-                                </li>
-                                <li className="nav-item col d-none d-md-block">
+                                </NavItem>
+                                <NavItem className="col d-none d-md-block">
                                     <i className="fa fa-search" aria-hidden="true"></i>
-                                </li>
-                                <li className="nav-item col d-none d-md-block">
+                                </NavItem>
+                                <NavItem className="col d-none d-md-block">
                                     <i className="fa fa-shopping-cart"></i>
-                                </li>
-                            </ul>
-                        </div>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
                     </div>
-                </Nav>
+                </Navbar>
             </React.Fragment >
         );
     }
