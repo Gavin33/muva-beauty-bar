@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Nav, Collapse } from 'reactstrap';
 
+// Simple function to add the category items to the list without having to type out each individual li element + key + text
 function CategoryItems(props) {
     return (props.items.map(item => {
         return (
-            <li id={String(item)}>
+            <li key={String(item)}>
                 {item}
             </li>
         )
     }
     ))
 }
-
+// Handles the shop categories toggles and displays the shop categories.
 class ShopCategory extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +42,7 @@ class ShopCategory extends Component {
         )
     }
 }
-
+// Sidebar component.
 class Sidebar extends Component {
 
 
@@ -60,19 +61,19 @@ class Sidebar extends Component {
         return (
                 <Nav vertical className="sidebar">
                     <ul className="list-unstyled components">
-                        <li id="ShopAll">
+                        <li key="ShopAll">
                             <h5>Shop All</h5>
                         </li>
-                        <li id="ByStyle">
+                        <li key="ByStyle">
                             <ShopCategory category="By Style" items={["French Nails", "Solid Nails", "Ombre Nails", "Bling Nails"]} />
                         </li>
-                        <li id="ByShape">
+                        <li key="ByShape">
                             <ShopCategory category="By Shape" items={["Coffin", "Tapered Square", "Stiletto", "Almond"]} />
                         </li>
-                        <li id="ByLength">
+                        <li key="ByLength">
                             <ShopCategory category="By Length" items={["Short", "Medium", "Long", "Extra Long"]} />
                         </li>
-                        <li id="OrderCustomSet">
+                        <li key="OrderCustomSet">
                             <h5>Order Custom Set</h5>
                         </li>
                     </ul>

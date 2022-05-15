@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
-import NAILS from '../shared/Nails';
-import { Fade, Stagger } from 'react-animation-components';
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import Shop from './ShopComponent'
 
+/* Carousel seems to move and change size during transitions on lg screens or larger... Implemented a temporary fix by using a flex carousel for md and smaller and a fixed size carousel for lg and bigger.
+See https://6-4-0--reactstrap.netlify.app/components/carousel/ for more info on carousels (and where I got some of the code) */
 class HomeCarousel extends Component {
     constructor(props) {
         super(props);
@@ -24,13 +25,13 @@ class HomeCarousel extends Component {
 
     next() {
         if (this.animating) return;
-        const nextIndex = this.state.activeIndex === NAILS.length - 1 ? 0 : this.state.activeIndex + 1;
+        const nextIndex = this.state.activeIndex === this.props.nails.length - 1 ? 0 : this.state.activeIndex + 1;
         this.setState({ activeIndex: nextIndex });
     }
 
     previous() {
         if (this.animating) return;
-        const nextIndex = this.state.activeIndex === 0 ? NAILS.length - 1 : this.state.activeIndex - 1;
+        const nextIndex = this.state.activeIndex === 0 ? this.props.nails.length - 1 : this.state.activeIndex - 1;
         this.setState({ activeIndex: nextIndex });
     }
 
@@ -38,28 +39,11 @@ class HomeCarousel extends Component {
         if (this.animating) return;
         this.setState({ activeIndex: newIndex });
     }
-
-/*     fadeControls(activeIndex, slides) {
-        if (!this.animating) return (
-            <Stagger in>
-                <Fade>
-                    <CarouselIndicators items={NAILS} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-                </Fade>
-                {slides}
-                <Fade>
-                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-                </Fade>
-                <Fade>
-                    <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-                </Fade>
-            </Stagger>
-        )
-    } */
-
+    
     render() {
         const { activeIndex } = this.state;
 
-        const slides = NAILS.map((item) => {
+        const slides = this.props.nails.map((item) => {
             return (
                 <CarouselItem
                     onExiting={this.onExiting}
@@ -67,7 +51,7 @@ class HomeCarousel extends Component {
                     key={item.src}
                 >
                     <img src={item.src} alt={item.altText} className="img-fluid img-responsive" />
-                    <CarouselCaption captionText={item.name} captionHeader={item.name} />
+                    <CarouselCaption captionText="$?" captionHeader={item.name} />
                 </CarouselItem>
             );
         });
@@ -81,7 +65,7 @@ class HomeCarousel extends Component {
                         previous={this.previous}
                         className="col-sm-10 col-md-8 col-lg-6"
                     >
-                        <CarouselIndicators items={NAILS} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                        <CarouselIndicators items={this.props.nails} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                         {slides}
                         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
@@ -91,13 +75,13 @@ class HomeCarousel extends Component {
         );
     }
 }
-
+// Basically the same as above except that it's a fixed size
 class HomeCarouselLg extends HomeCarousel {
 
     render() {
         const { activeIndex } = this.state;
 
-        const slides = NAILS.map((item) => {
+        const slides = this.props.nails.map((item) => {
             return (
                 <CarouselItem
                     onExiting={this.onExiting}
@@ -118,7 +102,7 @@ class HomeCarouselLg extends HomeCarousel {
                     previous={this.previous}
                     className="lg-carousel"
                 >
-                    <CarouselIndicators items={NAILS} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                    <CarouselIndicators items={this.props.nails} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                     {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                     <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
@@ -128,54 +112,18 @@ class HomeCarouselLg extends HomeCarousel {
     }
 }
 
-function RenderCard(item) {
-    item.map(item => {
-        return (
-            <Card>
-                <CardImg src={item.image} alt={item.name} />
-                <CardBody>
-                    <CardTitle>{item.name}</CardTitle>
-                    <CardText>{item.description}</CardText>
-                </CardBody>
-            </Card>
-        )
-    }
-    );
-}
-
+// Home page function itself
 
 function Home(props) {
-    /*     console.log(props.partner)
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md m-1">
-                        <RenderCard
-                            item={props.campsite}
-                            isLoading={props.campsitesLoading}
-                            errMess={props.campsitesErrMess}
-                        />
-                    </div>
-                    <div className="col-md m-1">
-                        <RenderCard
-                            item={props.promotion}
-                            isLoading={props.promotionLoading}
-                            errMess={props.promotionErrMess}
-                        />
-                    </div>
-                    <div className="col-md m-1">
-                        <RenderCard
-                            item={props.partner}
-                            isLoading={props.partnersLoading}
-                            errMess={props.partnersErrMess} />
-                    </div>
-                </div>
-            </div>
-        ); */
     return (
         <div>
-            <HomeCarousel />
-            <HomeCarouselLg />
+            <HomeCarousel nails={props.nails} />
+            <HomeCarouselLg nails={props.nails}/>
+            <div className="row">
+                <h2 className="col">Best sellers</h2>
+            </div>
+            {/* As of now the home page just has the shop page at the bottom of it, so just importing it here to DRY */}
+            < Shop />
         </div>
     )
 }

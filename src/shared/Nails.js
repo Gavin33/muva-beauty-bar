@@ -3,55 +3,55 @@ const NAILS = [
         id: 0,
         src: '/img/Bluey_cropped.jpg',
         name: 'Bluey',
-        featured: 'false'
+        featured: false
     },
     {
         id: 1,
         src: 'img/French Bling_cropped.jpg',
         name: 'French Bling',
-        featured: 'false'
+        featured: false
     },
     {
         id: 2,
         src: 'img/Golden Bling_cropped.jpg',
         name: 'Golden Bling',
-        featured: 'false'
+        featured: false
     },
     {
         id: 3,
         src: 'img/Marble Tings_cropped.jpg',
-        name: 'French Bling',
-        featured: 'false'
+        name: 'Marble Tings',
+        featured: false
     },
     {
         id: 4,
         src: 'img/Mauva_cropped.jpg',
         name: 'Mauva',
-        featured: 'false'
+        featured: false
     },
     {
         id: 5,
         src: 'img/Pynk_cropped.jpg',
         name: 'Pynk',
-        featured: 'false'
+        featured: false
     },
     {
         id: 6,
         src: 'img/Rich Girl_cropped.jpg',
         name: 'Rich Girl',
-        featured: 'false'
+        featured: false
     },
     {
         id: 7,
         src: 'img/Ruby Dee Reds_cropped.jpg',
         name: 'Ruby Dee Reds',
-        featured: 'false'
+        featured: false
     },
     {
         id: 8,
         src: 'img/Teddy Luv_v3.jpg',
         name: 'Teddy Luv',
-        featured: 'false'
+        featured: false
     },
     {
         id: 9,

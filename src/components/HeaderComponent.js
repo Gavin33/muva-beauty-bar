@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
+import { Navbar, NavbarToggler, Collapse, Nav, NavItem} from 'reactstrap';
 import LOGO from '../shared/Logo';
 
 class Header extends Component {
@@ -13,7 +13,6 @@ class Header extends Component {
         };
 
         this.toggleNav = this.toggleNav.bind(this);
-        this.toggleModal = this.toggleModal.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
     }
 
@@ -22,12 +21,7 @@ class Header extends Component {
             isNavOpen: !this.state.isNavOpen
         });
     }
-
-    toggleModal() {
-        this.setState({
-            isModalOpen: !this.state.isModalOpen
-        });
-    }
+    // Just keeping this one for when/if we need a login function.
     handleLogin(event) {
         alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
         this.toggleModal();
@@ -52,7 +46,7 @@ class Header extends Component {
                         <div className="col"></div>
                     </div>
                 </div>
-
+                {/* Navbar */}
                 <Navbar light sticky="top" expand="md" className="bg-light">
                     <div className="container">
                         <div className="row">
@@ -70,12 +64,13 @@ class Header extends Component {
                                 <i className="fa fa-shopping-cart"></i>
                             </div>
                         </div>
+                        {/* Select */}
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
-                                <NavItem className="col-4 col-sm-3 col-md-2 mt-3">
+                                <NavItem className="col-4 col-sm-3 col-md-2 mt-2">
                                     <select name="currency" id="currency" className="custom-select custom-select-sm">
 
-                                        <option selected value="USD">USD</option>
+                                        <option defaultValue value="USD">USD</option>
 
                                         <option value="CAD">CAD</option>
 
@@ -85,6 +80,7 @@ class Header extends Component {
 
                                     </select>
                                 </NavItem>
+                                {/* Links */}
                                 <NavItem className="col active">
                                     <a href="/" className="nav-link"> Home</a>
                                 </NavItem>
@@ -100,13 +96,14 @@ class Header extends Component {
                                 <NavItem className="col">
                                     <a href="/faq" className="nav-link"> Subscribe</a>
                                 </NavItem>
-                                <NavItem className="col d-none d-md-block">
+                                {/* Icons */}
+                                <NavItem className="col d-none d-md-block mt-2">
                                     <i className="fa fa-user"></i>
                                 </NavItem>
-                                <NavItem className="col d-none d-md-block">
+                                <NavItem className="col d-none d-md-block mt-2">
                                     <i className="fa fa-search" aria-hidden="true"></i>
                                 </NavItem>
-                                <NavItem className="col d-none d-md-block">
+                                <NavItem className="col d-none d-md-block mt-2">
                                     <i className="fa fa-shopping-cart"></i>
                                 </NavItem>
                             </Nav>
