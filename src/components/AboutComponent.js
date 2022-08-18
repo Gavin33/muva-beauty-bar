@@ -57,6 +57,7 @@ function About(props) {
                 <p className="mb-0">
                   "Self Care is giving the world the best of you instead of what is left of you."
                 </p>
+                <br/>
                 <footer className="blockquote-footer">
                   Muriel Strode,{' '}
                   <cite title="Source Title">
@@ -68,24 +69,25 @@ function About(props) {
           </Card>
         </div>
       </div>
-      <div className="row row-content">
+      {/* We'd put partners here... if we had them! */}
+{/*       <div className="row row-content">
         <div className="col-12">
           <h3>Community Partners</h3>
         </div>
         <PartnerList partners={props.partners} />
-      </div>
+      </div> */}
     </div>
   
   );
 }
-
+// More partners related stuff
 /**
  *
  * @param {partner {} from redux store via props} partner
  * called by PartnerList.
  * Displays from each partner object in a row its image on the left and Title with description on the right
  */
-function RenderPartner({ partner }) {
+/* function RenderPartner({ partner }) {
     if (partner) {
         return (
             <>
@@ -98,18 +100,18 @@ function RenderPartner({ partner }) {
         );
     }
     return <div />;
-}
+} */
 
 /**
  *
- * @param {partners={props.partners}} props
+ * param {partners={props.partners}} props
  * called by About component.
  * Returns media list from partners objects.
  * or Loading or Error message
  */
-const PartnerList = props => {
+// const PartnerList = props => {
   // variable partners is a map of each partner object returned from RenderPartner component
-  const partners = props.partners.partners.map(partner => {
+/*   const partners = props.partners.partners.map(partner => {
     return (
       <Fade key={partner.id}>
         <Media tag="li">
@@ -117,27 +119,27 @@ const PartnerList = props => {
         </Media>
       </Fade>
     );
-  });
+  }); */
   // displays if true.
-  if (props.partners.isLoading) {
+/*   if (props.partners.isLoading) {
     return <Loading />;
-  }
+  } */
   // displays if errMess is not null
-  if (props.partners.errMess) {
+/*   if (props.partners.errMess) {
     return (
       <div className="col">
         <h4>{props.partners.errMess}</h4>;
       </div>
     );
-  }
+  } */
   // variable partners is returned in a media list, if previous 2 if statements don't return.
-  return (
+/*   return (
     <div className="col mt-4">
       <Media list>
         <Stagger in>{partners}</Stagger>
       </Media>
     </div>
   );
-};
+}; */
 
 export default About;

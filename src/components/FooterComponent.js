@@ -3,7 +3,7 @@ export default function Footer() {
     return (
         <footer className="text-center mt-5">
             <div className="container">
-                <div className="row">
+                <div className="row justify-content-center">
                     <div className="col-4 col-sm-2 offset-1">
                         {/* Links */}
                         <h5>Links</h5>
